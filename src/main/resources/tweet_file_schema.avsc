@@ -1,0 +1,6 @@
+{ "namespace": "com.eduonix.hadoop.partone",
+ "type":"record",
+ "name":"tweets_ser",
+ "fields":[
+ 	{"name": "text","type":["null","string"]} ]
+}
