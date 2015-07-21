@@ -50,7 +50,7 @@ public class PigETL {
 
         pigServer.registerQuery("avros = load 'ser_twitter.avro' using  org.apache.pig.piggybank.storage.avro.AvroStorage();");
 
-        pigServer.registerQuery("avros = store avros into 'mongodb://localhost/twitts' using com.mongodb.hadoop.pig.MongoStorage();;");
+        pigServer.registerQuery("avros = store avros into 'mongodb://localhost:27017/twitts' using com.mongodb.hadoop.pig.MongoStorage('', '');");
 
     }
 
