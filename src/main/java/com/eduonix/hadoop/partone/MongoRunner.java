@@ -1,34 +1,62 @@
 package com.eduonix.hadoop.partone;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoURI;
+import com.mongodb.*;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
 
 import java.net.UnknownHostException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
+
+import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Sorts.ascending;
+import static java.util.Arrays.asList;
 
 /**
  * Created by ubu on 21.07.15.
  */
 public class MongoRunner {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
        // MongoURI uri = new MongoURI("mongodb://127.0.0.1:27017/tweets");
-         MongoClient mongo = new MongoClient( "127.0.0.1" , 27017 );
+         MongoClient mongoClient = new MongoClient( "127.0.0.1" , 27017 );
         // Now connect to your databases
-        DB db = mongo.getDB("test");
-        System.out.println("Connect to database successfully"+db.getMongo().toString());
+         MongoDatabase db = mongoClient.getDatabase("test");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH);
+        db.getCollection("restaurants").insertOne(
+                new Document("address",
+                        new Document()
+                                .append("street", "2 Avenue")
+                                .append("zipcode", "10075")
+                                .append("building", "1480")
+                                .append("coord", asList(-73.9557413, 40.7720266)))
+                        .append("borough", "Manhattan")
+                        .append("cuisine", "Italian")
+                        .append("grades", asList(
+                                new Document()
+                                        .append("date", format.parse("2014-10-01T00:00:00Z"))
+                                        .append("grade", "A")
+                                        .append("score", 11),
+                                new Document()
+                                        .append("date", format.parse("2014-01-16T00:00:00Z"))
+                                        .append("grade", "B")
+                                        .append("score", 17)))
+                        .append("name", "Vella")
+                        .append("restaurant_id", "41704620"));
 
-        DBCollection databaseList = db.getCollection("dbParameters_Filtered");
-        DBCollection dataLinksDb = db.getCollection("datalinks_Filtered");
+        FindIterable<Document> iterable = db.getCollection("restaurants").find();
 
-        Set<String> colls = db.getCollectionNames();
-        for (String s : colls) {
-            System.out.println(s);
-        }
-
+        iterable.forEach(new Block<Document>() {
+            @Override
+            public void apply(final Document document) {
+                System.out.println(document);
+            }
+        });
     }
 }
