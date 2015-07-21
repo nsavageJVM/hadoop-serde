@@ -39,21 +39,21 @@ public class PigETL {
 
         // run pig in local mode
         pigServer = new PigServer(ex);
-        try {
-            pigServer.registerJar(jarPathPiggy);
-
-//            pigServer.registerJar(jarPathUDF);
-//            pigServer.registerJar(jarPathArvo);
-//            pigServer.registerJar(jarPathJson);
-//            pigServer.registerJar(jarPathMon);
-//            pigServer.registerJar(jarPathMonH);
-//            pigServer.registerJar(jarPathMonP);
-//            pigServer.registerJar(jarPathJm);
-//            pigServer.registerJar(jarPathJc);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//          //  pigServer.registerJar(jarPathPiggy);
+//
+////            pigServer.registerJar(jarPathUDF);
+////            pigServer.registerJar(jarPathArvo);
+////            pigServer.registerJar(jarPathJson);
+////            pigServer.registerJar(jarPathMon);
+////            pigServer.registerJar(jarPathMonH);
+////            pigServer.registerJar(jarPathMonP);
+////            pigServer.registerJar(jarPathJm);
+////            pigServer.registerJar(jarPathJc);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
      //   pigServer.registerQuery("avros = load 'ser_twitter.avro' using  org.apache.pig.piggybank.storage.avro.AvroStorage();");
 
