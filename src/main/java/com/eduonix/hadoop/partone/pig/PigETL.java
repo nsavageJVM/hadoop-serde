@@ -28,7 +28,7 @@ public class PigETL {
 
         String jarPathUDF =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "pigmodule.jar");
         String jarPathPiggy =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "piggybank-0.12.0.jar");
-        String jarPathArvo =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "avro-1.5.3.jar");
+        String jarPathArvo =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "avro-1.7.5.jar");
         String jarPathJson =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "json-simple-1.1.jar");
         String jarPathMon =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "mongo-java-driver-3.0.0.jar");
         String jarPathMonH =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "mongo-hadoop-core-1.4.1-SNAPSHOT.jar");
@@ -50,12 +50,10 @@ public class PigETL {
 
         pigServer.registerQuery("avros = load 'ser_twitter.avro' using  org.apache.pig.piggybank.storage.avro.AvroStorage();");
 
-        pigServer.registerQuery("avros = store avros into 'mongodb://localhost:27017/twitts' using com.mongodb.hadoop.pig.MongoStorage('', '');");
+        pigServer.registerQuery("avros = store avros into 'mongodb://localhost:27017/twitts' using com.mongodb.hadoop.pig.MongoInsertStorage;");
+
 
     }
-
-
-
 
 
 }
