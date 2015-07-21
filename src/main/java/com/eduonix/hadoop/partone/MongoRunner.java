@@ -22,7 +22,11 @@ import static java.util.Arrays.asList;
  */
 public class MongoRunner {
 
+    private static final String projectRootPath = System.getProperty("user.dir");
+
     public static void main(String[] args) throws ParseException {
+        System.out.println("projectRootPath "+projectRootPath);
+
 
        // MongoURI uri = new MongoURI("mongodb://127.0.0.1:27017/tweets");
          MongoClient mongoClient = new MongoClient( "127.0.0.1" , 27017 );
