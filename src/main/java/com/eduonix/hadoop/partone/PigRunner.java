@@ -9,7 +9,7 @@ import org.apache.pig.ExecType;
 public class PigRunner {
 
 
-    private static final boolean  isLocal = false;
+    private static final boolean  isLocal = true;
 
     public static void main(String[] args) {
 

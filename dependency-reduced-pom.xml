@@ -252,13 +252,6 @@
       </build>
     </profile>
   </profiles>
-  <repositories>
-    <repository>
-      <id>maven-hadoop</id>
-      <name>Hadoop Releases</name>
-      <url>https://repository.cloudera.com/content/repositories/releases/</url>
-    </repository>
-  </repositories>
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <hadoop.version>2.7.0</hadoop.version>
