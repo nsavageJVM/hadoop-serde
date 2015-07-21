@@ -14,7 +14,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
         <hadoop.version>2.7.0</hadoop.version>
     </properties>
 
@@ -67,6 +66,7 @@
         <dependency>
             <groupId>org.apache.pig</groupId>
             <artifactId>pig</artifactId>
+            <classifier>h2</classifier>
             <version>0.14.0</version>
         </dependency>
 
@@ -263,6 +263,7 @@
 
 
         <profile>
+
             <id>pig</id>
 
             <build>
