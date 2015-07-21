@@ -16,11 +16,14 @@ public class MongoRunner {
 
     public static void main(String[] args) {
 
-        MongoURI uri = new MongoURI("mongodb://127.0.0.1:27017/tweets");
-      //  MongoClient mongo = new MongoClient( "127.0.0.1" , 27017 );
+       // MongoURI uri = new MongoURI("mongodb://127.0.0.1:27017/tweets");
+         MongoClient mongo = new MongoClient( "127.0.0.1" , 27017 );
         // Now connect to your databases
-        DB db = uri.connectDB();
+        DB db = mongo.getDB("test");
         System.out.println("Connect to database successfully"+db.getMongo().toString());
+
+        DBCollection databaseList = db.getCollection("dbParameters_Filtered");
+        DBCollection dataLinksDb = db.getCollection("datalinks_Filtered");
 
         Set<String> colls = db.getCollectionNames();
         for (String s : colls) {
