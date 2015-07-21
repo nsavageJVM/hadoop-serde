@@ -14,12 +14,16 @@ public class PigETL {
 
     private PigServer pigServer;
 
-    private static final String projectRootPath = System.getProperty("user.dir");
+    private static  String projectRootPath = System.getProperty("user.dir");
 
 
 
 
-    public PigETL(  ExecType ex) throws Exception{
+    public PigETL( boolean isLocal, ExecType ex) throws Exception{
+
+        if (!isLocal) {
+            projectRootPath = String.format("%s/%s", projectRootPath, "hadoop-serde" );
+        }
 
 
         String jarPathUDF =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "pigmodule.jar");
