@@ -38,9 +38,9 @@ public class PigETL {
         String jarPathPiggy =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "piggybank-0.14.0.jar");
 
         // run pig in local mode
-        pigServer = new PigServer(ex);
-//        try {
-//          //  pigServer.registerJar(jarPathPiggy);
+            pigServer = new PigServer(ex);
+       try {
+             pigServer.registerJar(jarPathPiggy);
 //
 ////            pigServer.registerJar(jarPathUDF);
 ////            pigServer.registerJar(jarPathArvo);
@@ -51,9 +51,9 @@ public class PigETL {
 ////            pigServer.registerJar(jarPathJm);
 ////            pigServer.registerJar(jarPathJc);
 //
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
      //   pigServer.registerQuery("avros = load 'ser_twitter.avro' using  org.apache.pig.piggybank.storage.avro.AvroStorage();");
 
