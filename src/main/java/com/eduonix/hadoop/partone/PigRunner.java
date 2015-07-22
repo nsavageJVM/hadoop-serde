@@ -20,7 +20,7 @@ public class PigRunner {
             pigETL = new PigETL(isLocal, ExecType.LOCAL);
 
 
-            pigETL.loadData();
+          //  pigETL.loadData();
 
             pigETL.transformData();
 
