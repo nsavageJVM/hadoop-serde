@@ -74,7 +74,7 @@ public class PigETL {
 
 
         if (!isLocal) {
-            pigServer.registerQuery("STORE C  into '/root/pig_out';");
+            pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
         } else {
 
             pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
