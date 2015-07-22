@@ -9,15 +9,21 @@ import org.apache.pig.ExecType;
 public class PigRunner {
 
 
-    private static final boolean  isLocal = false;
+    private static final boolean  isLocal = true;
 
     public static void main(String[] args) {
 
 
-       PigETL pigResult = null;
+       PigETL pigETL = null;
 
         try {
-              pigResult = new PigETL(isLocal, ExecType.LOCAL);
+            pigETL = new PigETL(isLocal, ExecType.LOCAL);
+
+
+            pigETL.loadData();
+
+            pigETL.transformData();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
