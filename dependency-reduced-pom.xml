@@ -180,12 +180,12 @@
                   <goal>jar</goal>
                 </goals>
                 <configuration>
-                  <outputDirectory>/home/ubu/venu/eduonix-part-two/pig-jars</outputDirectory>
+                  <outputDirectory>/root/hadoop-serde/pig-jars</outputDirectory>
                 </configuration>
               </execution>
             </executions>
             <configuration>
-              <outputDirectory>/home/ubu/venu/eduonix-part-two/pig-jars</outputDirectory>
+              <outputDirectory>/root/hadoop-serde/pig-jars</outputDirectory>
             </configuration>
           </plugin>
           <plugin>
