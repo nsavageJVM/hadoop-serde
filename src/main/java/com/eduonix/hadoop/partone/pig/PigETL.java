@@ -122,7 +122,7 @@ public class PigETL {
 
         pigServer.registerQuery("mongoJson =  LOAD './pig_out/first_collection.json' USING JsonLoader();");
 
-        pigServer.registerQuery("STORE mongoJson INTO 'mongodb://localhost:27017/tweets' USING com.mongodb.hadoop.pig.MongoInsertStorage;");
+        pigServer.registerQuery("STORE mongoJson INTO 'mongodb://localhost:27017/test.tweets' USING com.mongodb.hadoop.pig.MongoInsertStorage;");
 
     }
 
