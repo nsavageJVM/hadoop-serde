@@ -19,10 +19,12 @@ public class PigETL {
     private static  String projectRootPath = System.getProperty("user.dir");
 
     private static String regex = "'.*please.*'";
-
+    private boolean isLocal;
 
 
     public PigETL( boolean isLocal, ExecType ex) throws Exception{
+
+        this.isLocal = isLocal;
 
         if (!isLocal) {
             projectRootPath = String.format("%s/%s", projectRootPath, "hadoop-serde" );
@@ -68,6 +70,30 @@ public class PigETL {
 //
 //        pigServer.registerQuery("B = FOREACH raw_limit_5 GENERATE $0;");
 
+//        pigServer.registerQuery("raw = load 'raw_data.txt' as (str:chararray);");
+//
+//        pigServer.registerQuery("C = filter raw by str matches '.*please.*';" );
+//
+//
+//        if (!isLocal) {
+//            pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
+//        } else {
+//
+//            pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
+//
+//        }
+
+
+
+   //     pigServer.registerQuery("avros = store avros into 'mongodb://localhost:27017/twitts' using com.mongodb.hadoop.pig.MongoInsertStorage;");
+
+
+    }
+
+
+
+    public void loadData() throws IOException {
+
         pigServer.registerQuery("raw = load 'raw_data.txt' as (str:chararray);");
 
         pigServer.registerQuery("C = filter raw by str matches '.*please.*';" );
@@ -79,16 +105,28 @@ public class PigETL {
 
             pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
 
-
-
         }
 
 
 
-   //     pigServer.registerQuery("avros = store avros into 'mongodb://localhost:27017/twitts' using com.mongodb.hadoop.pig.MongoInsertStorage;");
+    }
 
+
+
+    public void transformData() throws IOException {
+
+        //STORE data INTO 'mongodb://<username>:<password>@<host>:<port>/<database>.<collection>'
+     //   USING com.mongodb.hadoop.pig.MongoInsertStorage('<id_alias>');
+
+        //'mongodb://localhost:27017/mongo_hadoop.update_mus'
+
+        pigServer.registerQuery("mongoJson =  LOAD './pig_out/first_collection.json' USING JsonLoader();");
+
+        pigServer.registerQuery("STORE mongoJson INTO 'mongodb://localhost:27017/tweets' USING com.mongodb.hadoop.pig.MongoInsertStorage;");
 
     }
+
+
 
 
 }

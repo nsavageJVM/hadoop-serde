@@ -14,10 +14,16 @@ public class PigRunner {
     public static void main(String[] args) {
 
 
-       PigETL pigResult = null;
+       PigETL pigETL = null;
 
         try {
-              pigResult = new PigETL(isLocal, ExecType.LOCAL);
+            pigETL = new PigETL(isLocal, ExecType.LOCAL);
+
+
+            pigETL.loadData();
+
+            pigETL.transformData();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
