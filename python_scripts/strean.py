@@ -20,8 +20,3 @@ auth.set_access_token("xxxxxxxxxx", "xxxxxxxxxxx")
 api = tweepy.API(auth)
 sapi = tweepy.streaming.Stream(auth, StreamProcessor( api=api, numtweets=15))
 sapi.sample()
-
-
-
-
-
