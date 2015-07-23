@@ -12,17 +12,16 @@ class StreamProcessor(tweepy.StreamListener):
     def on_data(self, tweet):
         tweet_data = json.loads(tweet)
         if ('text' in tweet_data) and ( tweet_data['user']['lang']== 'en' ): 
-            print tweet_data['text'].encode("utf-8").rstrip()
-            print tweet_data['user']['lang'].encode("utf-8").rstrip()
-        self.count = self.count+1
+            #print tweet.rstrip()
+	    print tweet_data['text'].encode("utf-8").rstrip()
+            self.count = self.count+1
         return False if self.count == self.limit else True
 
-auth = tweepy.OAuthHandler("LigCUWP7pN1lAWFiCpvIUeHRq", "ypFPAqO93ndoG4kUGfXJx2MhioJuPN28XTNSMobftlMmZfTtcL")
-auth.set_access_token("3347110648-cqofWRFUTTawCJ7mSBOUL8qXwKQqZ3qoRYX60PK", "lC7Z3PSpQWVhFCjTPvczrG5NVcnpgld7fkj3rnWNHEnut")
+auth = tweepy.OAuthHandler("xxxxxxxxxxx", "xxxxxxxxxxx")
+auth.set_access_token("xxxxxxxxxxx", "xxxxxxxxxxx")
 api = tweepy.API(auth)
-sapi = tweepy.streaming.Stream(auth, StreamProcessor( api=api, numtweets=550))
+sapi = tweepy.streaming.Stream(auth, StreamProcessor( api=api, numtweets=15))
 sapi.sample()
-
 
 
 

@@ -16,8 +16,8 @@ class StreamProcessor(tweepy.StreamListener):
         self.count = self.count+1
         return False if self.count == self.limit else True
 
-auth = tweepy.OAuthHandler("LigCUWP7pN1lAWFiCpvIUeHRq", "ypFPAqO93ndoG4kUGfXJx2MhioJuPN28XTNSMobftlMmZfTtcL")
-auth.set_access_token("3347110648-cqofWRFUTTawCJ7mSBOUL8qXwKQqZ3qoRYX60PK", "lC7Z3PSpQWVhFCjTPvczrG5NVcnpgld7fkj3rnWNHEnut")
+auth = tweepy.OAuthHandler("xxxxxx", "xxxxxxxxxx")
+auth.set_access_token("xxxxxxxxxx", "xxxxxxxxxxx")
 api = tweepy.API(auth)
 sapi = tweepy.streaming.Stream(auth, StreamProcessor( api=api, numtweets=550))
 sapi.sample()
