@@ -32,7 +32,6 @@ public class PigETL {
 
 //
         String jarPathUDF =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "pigmodule.jar");
-        String jarPathArvo =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "avro-1.7.5.jar");
         String jarPathJson =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "json-simple-1.1.jar");
         String jarPathMon =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "mongo-java-driver-3.0.0.jar");
         String jarPathMonH =  String.format("%s/%s/%s",projectRootPath, "pig-jars"  , "mongo-hadoop-core-1.4.1-SNAPSHOT.jar");
@@ -48,7 +47,6 @@ public class PigETL {
 
             pigServer.registerJar(jarPathPiggy);
             pigServer.registerJar(jarPathUDF);
-            pigServer.registerJar(jarPathArvo);
             pigServer.registerJar(jarPathJson);
             pigServer.registerJar(jarPathMon);
             pigServer.registerJar(jarPathMonH);
