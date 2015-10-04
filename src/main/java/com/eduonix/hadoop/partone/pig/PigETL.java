@@ -58,34 +58,6 @@ public class PigETL {
             e.printStackTrace();
         }
 
-    //   pigServer.registerQuery("avros = load './ser_twitter.avro' using  org.apache.pig.piggybank.storage.avro.AvroStorage();");
-//
-//
-//        pigServer.registerQuery("raw = load 'raw_data.txt' USING TextLoader AS (line:chararray);");
-//        pigServer.registerQuery("raw_limit_5 = LIMIT raw 50;");
-//
-//        pigServer.registerQuery("raw_limit_5 = LIMIT raw 50;");
-//
-//        pigServer.registerQuery("B = FOREACH raw_limit_5 GENERATE $0;");
-
-//        pigServer.registerQuery("raw = load 'raw_data.txt' as (str:chararray);");
-//
-//        pigServer.registerQuery("C = filter raw by str matches '.*please.*';" );
-//
-//
-//        if (!isLocal) {
-//            pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
-//        } else {
-//
-//            pigServer.registerQuery("STORE C into './pig_out/first_collection.json' USING JsonStorage();");
-//
-//        }
-
-
-
-   //     pigServer.registerQuery("avros = store avros into 'mongodb://localhost:27017/twitts' using com.mongodb.hadoop.pig.MongoInsertStorage;");
-
-
     }
 
 
@@ -114,9 +86,7 @@ public class PigETL {
     public void transformData() throws IOException {
 
         //STORE data INTO 'mongodb://<username>:<password>@<host>:<port>/<database>.<collection>'
-     //   USING com.mongodb.hadoop.pig.MongoInsertStorage('<id_alias>');
-
-        //'mongodb://localhost:27017/mongo_hadoop.update_mus'
+        //   USING com.mongodb.hadoop.pig.MongoInsertStorage('<id_alias>');
 
         pigServer.registerQuery("mongoJson =  LOAD './pig_out/first_collection.json' USING JsonLoader();");
 

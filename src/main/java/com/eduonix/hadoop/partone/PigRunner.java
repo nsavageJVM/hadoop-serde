@@ -19,10 +19,10 @@ public class PigRunner {
         try {
             pigETL = new PigETL(isLocal, ExecType.LOCAL);
 
-
-          //  pigETL.loadData();
-
-              pigETL.transformData();
+            // loads data into hdfs use this first
+              pigETL.loadData();
+            // loads data into mongo use this second
+         //     pigETL.transformData();
 
         } catch (Exception e) {
             e.printStackTrace();
