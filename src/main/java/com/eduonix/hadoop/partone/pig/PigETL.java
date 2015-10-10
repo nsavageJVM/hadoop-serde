@@ -26,7 +26,7 @@ public class PigETL {
 
         this.isLocal = isLocal;
 
-        if (!isLocal) {
+        if (isLocal) {
             projectRootPath = String.format("%s/%s", projectRootPath, "hadoop-serde" );
         }
 
